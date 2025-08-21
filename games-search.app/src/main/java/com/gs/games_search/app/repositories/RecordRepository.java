@@ -11,9 +11,9 @@ import java.time.Instant;
 @Repository
 public interface RecordRepository extends JpaRepository<Record, Long> {
 
-    // Put coalesce after put postgres
+    // JPQL to consult data for records
     @Query("SELECT obj FROM Record obj WHERE " +
-            "(:min IS NULL OR obj.moment >= :min) AND " +
-            "(:max IS NULL OR obj.moment <= :max)")
+            /*coalesce -> */"(coalesce(:min, null) IS NULL OR obj.moment >= :min) AND " +
+            "(coalesce(:max,null) IS NULL OR obj.moment <= :max)")
     Page<Record> findByMoments(Instant min, Instant max, PageRequest pageRequest);
 }
