@@ -7,6 +7,8 @@ import com.gs.games_search.app.dtos.RecordInsertDto;
 import com.gs.games_search.app.repositories.GameRepository;
 import com.gs.games_search.app.repositories.RecordRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -30,5 +32,10 @@ public class RecordService {
         rec.setGame(gameRepository.getReferenceById(dto.gameId()));
 
         return new RecordDto(recordRepository.save(rec));
+    }
+
+    @Transactional(readOnly = true)
+    public Page<RecordDto> findByMoments(Instant minDate, Instant maxDate, PageRequest pageRequest) {
+        return recordRepository.findByMoments(minDate, maxDate, pageRequest).map(RecordDto::new);
     }
 }
