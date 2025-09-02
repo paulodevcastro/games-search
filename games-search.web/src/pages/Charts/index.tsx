@@ -54,10 +54,8 @@ const Charts = () => {
                         Jogos mais votados
                     </h1>
                     <div className="games-container">
-                        <Chart options={barOptions} 
+                        <Chart className="top-responsivity" options={barOptions} 
                         type='bar'
-                        width="900"
-                        height="650"
                         series={[{ data: barChartData}]}
                         />
                     </div>

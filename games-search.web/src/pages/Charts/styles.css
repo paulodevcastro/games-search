@@ -4,10 +4,32 @@
 
 .top-related {
   background-color: var(--color-dimgray);
-  padding-top: 30px;
+  padding-top: 10px;
   padding-left: 70px;
   border-radius: 10px;
   flex: 1;
+}
+
+.top-responsivity {
+  width: 100%;
+  height: auto;
+}
+
+@media (min-width: 1000px){
+  .top-responsivity {
+    flex: 1;
+  }
+}
+
+@media (max-width: 1200px){
+  .chart-container {
+    display: block;
+  }
+  .charts {
+    display: flex;
+    width: 100%;
+    margin-top: 25px;
+  }
 }
 
 .top-related-title {
@@ -17,7 +39,6 @@
 
 .games-container {
   display: flex;
-  justify-content: center;
 }
 
 .games-list {

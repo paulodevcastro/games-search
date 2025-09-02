@@ -30,6 +30,19 @@ export const pieOptions = {
       },
     },
   },
+  responsive: [
+    {
+      breakpoint: 768,  // Quando a tela for pequena, como em dispositivos móveis
+      options: {
+        chart: {
+          width: "100%",
+        },
+        dataLabels: {
+          fontSize: "16px", // Ajuste de tamanho de fonte
+        },
+      },
+    },
+  ],
 };
 
 export const barOptions = {
